@@ -1,0 +1,59 @@
+#include<cs50.h>
+#include<stdio.h>
+
+int main(void)
+{        printf("Number : ");
+        long long int no=get_long_long();
+        long long int n1=no;
+        long long int n2=no;
+        long long int a,b,c,d,sum1=0,sum3=0,sum=0,e=0,f,g;
+        do
+        {
+            a=no/10;
+            c=a/10;
+            b=no-(a*10);
+            a=a-c*10;
+            a=a*2;
+            if(a>=10)
+            {   g=a/10;
+                a=a-g*10;
+                a=a+g;
+            }
+            sum1+=a;
+            sum3+=b;
+            no=no/100;
+        }while(no>=1);
+        sum=sum1+sum3;
+        sum=sum%10;
+        if(sum!=0)
+        {
+            printf("INVALID\n");
+        }
+        else
+        {
+            while(n1>=1)
+            {
+                d=n1;
+                e++;
+                n1=n1/10;
+            }
+            while(n2>=100)
+            {
+                n2=n2/10;
+                 f=n2;
+            }
+
+        if((d==4)&&((e==13)||(e==16)))
+        {
+            printf("VISA\n");
+        }
+        if((f==34||f==37)&&(e==15))
+        {
+            printf("AMEX\n");
+        }
+        if(((f==51)||(f==52)||(f==53)||(f==54)||(f==55))&&(e==16))
+        {
+            printf("MASTERCARD\n");
+        }
+        }
+}
