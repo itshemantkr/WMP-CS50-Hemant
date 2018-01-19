@@ -1,0 +1,52 @@
+#include <cs50.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int main(int argc, string argv[])
+{
+    if (argc != 2)
+    {
+        return 1;
+    }
+        string key=argv[1];
+        int d=strlen(key);
+        for (int i = 0,n=strlen(argv[1]); i < n; i++)
+    {
+        if (!isalpha(argv[1][i]))
+          return 1;
+          if(isupper(key[i]))
+          key[i]-='A';
+          if(islower(key[i]))
+          key[i]-='a';
+    }
+
+    printf("plaintext:");
+    string s = get_string();
+    int j=0;
+    printf("ciphertext:");
+    for (int i = 0,n=strlen(s);i<n; i++)
+    {
+        if(isalpha(s[i]))
+        {
+            if(isupper(s[i]))
+            {
+                s[i]-='A';
+                s[i]=(s[i]+key[j])%26;
+                s[i]+='A';
+            }
+            if(islower(s[i]))
+            {
+                s[i]-='a';
+                s[i]=(s[i]+key[j])%26;
+                s[i]=s[i]+'a';
+            }
+            j++;
+            if(j==d)
+            j=0;
+        }
+    }
+    printf("%s\n",s);
+}
